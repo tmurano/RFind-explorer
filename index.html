@@ -559,7 +559,12 @@ function drawTsne(){
     plotDiv.innerHTML = '<div style="padding:40px; text-align:center; color:#999;">tSNE coordinates not embedded. Re-run Chunk3.R + update_explorer_embed.py to include tsne_x / tsne_y.</div>';
     return;
   }
-  plotDiv.innerHTML = '';  // clear placeholder if any
+  // Clear "not embedded" placeholder only, preserve existing Plotly plot.
+  // Plotly marks plotDiv itself with .js-plotly-plot class (not a descendant),
+  // so we detect existing plot via classList, not querySelector.
+  if (!plotDiv.classList.contains('js-plotly-plot')) {
+    plotDiv.innerHTML = '';
+  }
   const sel = document.getElementById('tsnePanel');
   const panel = sel ? sel.value : DIMS[0];
   if (!panel || !DATA[panel]) return;
