@@ -211,7 +211,6 @@
       <div class="ctrl" style="margin-left:auto; font-size:11px; color:#777;">
         全次元の最適線形結合  —  判別情報は1軸のみ
       </div>
-      <button class="upload-btn" onclick="exportLoadings()" style="font-size:11px;">📥 Loadings CSV</button>
       <button class="upload-btn" onclick="exportSampleScores()" style="font-size:11px;">📥 Sample scores CSV</button>
     </div>
     <div class="pa-summary pa-summary-target"></div>
@@ -1213,22 +1212,6 @@ function exportPairRanking(){
   rows.push(['# Full LDA']);
   rows.push(['D2_full (all dims)', latestR.D2_full.toFixed(4)]);
   downloadCSV(`rfind_pair_ranking_${latestClA}_vs_${latestClB}.csv`, rows);
-}
-
-function exportLoadings(){
-  if (!latestR) { alert('先に Pair Analysis または Full LDA タブで Group A/B を選択してください'); return; }
-  const rows = [['dim','lda_axis1_loading','residual_pc1_loading']];
-  activeDims().forEach((d, i) => {
-    rows.push([d, latestR.wUnit[i].toFixed(5), latestR.v2Unit[i].toFixed(5)]);
-  });
-  rows.push([]);
-  rows.push(['# Metadata']);
-  rows.push(['group_A', latestClA]);
-  rows.push(['group_B', latestClB]);
-  rows.push(['n_A', latestR.nA]);
-  rows.push(['n_B', latestR.nB]);
-  rows.push(['D2_full', latestR.D2_full.toFixed(4)]);
-  downloadCSV(`rfind_loadings_${latestClA}_vs_${latestClB}.csv`, rows);
 }
 
 function exportSampleScores(){
