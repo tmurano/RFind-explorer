@@ -1,43 +1,28 @@
-# RFind-explorer
+# RFind-explorer (archived)
 
-Interactive HTML explorer for **RFind-sc** (Running Fisher for individuals, single-cell version) scoring results.
+> **This repository has moved.** Its multi-panel tSNE, 2D scatter, and
+> correlation views are now part of the
+> [**RFind-sc Panel Registry**](https://tmurano.github.io/rfind-panels/).
+>
+> - **Registry + analysis workbench**: https://tmurano.github.io/rfind-panels/
+> - **Registry repo**: https://github.com/tmurano/rfind-panels
+> - **R package**: https://github.com/tmurano/RFindsc
+> - **Python package**: https://github.com/tmurano/rfindsc-py
 
-**Live demo**: https://tmurano.github.io/RFind-explorer/
+The `index.html` in this repo now serves a redirect page; visitors to
+`tmurano.github.io/RFind-explorer/` are auto-forwarded to the registry.
+The original interactive Explorer HTML is preserved in the git history
+at commit [`eef7577`](https://github.com/tmurano/RFind-explorer/commit/eef7577)
+for reference.
 
-## Overview
+## Why the move
 
-RFind-sc applies the RFind (Running Fisher for individuals) framework to single-cell RNA-seq data, producing a cell × axis score matrix that can be explored across multiple gene-set panels. This Explorer visualizes the multi-dimensional score space with:
-
-- **2D / 3D scatter** with cluster/group coloring
-- **Scatter matrix** across all axes
-- **Correlation heatmap** (global + per-cluster)
-- **Pair Analysis (LDA)** for 2-group discrimination
-- **Full LDA** across all dimensions
-- **tSNE color map** with panel score overlay
-
-## Demo dataset
-
-The embedded demo uses mouse microglia scRNA-seq from [Hammond et al. 2019 *Immunity*](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE121654) (n = 5,998 cells, 7 groups, 12 Seurat clusters) scored across 10 panels covering aging, demyelination, development, disease-associated microglia signatures (KS-DAM, LDAM), curated references (Marschallinger 2020), and active chromatin marks (H3K27ac, H3K4me2, H3K4me1).
-
-## Axis on/off selector
-
-Click the axis chips to include/exclude panels from scatter matrix, correlation, pair analysis, and LDA computations (minimum 2 axes required).
-
-## Usage
-
-Open [`index.html`](./index.html) in any modern browser — no server required. All data is embedded.
-
-## Related
-
-- **RFind-sc R package**: coming soon (see [ROADMAP](https://github.com/tmurano/RFind-explorer))
-- **Panel registry** (Tier 0): coming soon
+`RFind-explorer` and `rfind-panels` each shipped their own ~30 MB
+Hammond embed, and the Explorer's Visualize / Compare views had no
+coupling to the panel catalog or the submission flow. Consolidating
+into one page removed the duplication and gave contributors a single
+URL for browse → try → analyze → submit.
 
 ## License
 
-[MIT](./LICENSE)
-
-## Citation
-
-Manuscript in preparation. Please cite as:
-
-> Murano T. et al. *RFind-sc: rank-based gene-set scoring for single-cell RNA-seq.* (manuscript in preparation, 2026)
+[MIT](./LICENSE).
